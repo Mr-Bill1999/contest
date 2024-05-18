@@ -1,1 +1,1 @@
-# contest
+# mini-contest
