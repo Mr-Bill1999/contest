@@ -1,4 +1,5 @@
 import math
+import argparse
 
 
 def point_position(x, y, x_c, y_c, r):
@@ -11,12 +12,18 @@ def point_position(x, y, x_c, y_c, r):
         return 2
 
 
-with open('circle_values.txt', 'r') as file:
+parser = argparse.ArgumentParser()
+parser.add_argument('circle_file', type=str, help="Path to the file containing circle values.")
+parser.add_argument('points_file', type=str, help="Path to the file containing points.")
+
+args = parser.parse_args()
+
+with open(args.circle_file, 'r') as file:
     x_c, y_c = map(float, file.readline().strip().split())
     r = float(file.readline().strip())
 
 points = []
-with open('points.txt', 'r') as file:
+with open(args.points_file, 'r') as file:
     for line in file:
         x, y = map(float, line.strip().split())
         points.append((x, y))
