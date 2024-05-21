@@ -1,6 +1,14 @@
+import argparse
+
 nums = []
 
-with open('nums.txt', 'r') as file:
+
+parser = argparse.ArgumentParser()
+parser.add_argument('nums_file', type=str, help='Path to nums of array.')
+args = parser.parse_args()
+
+
+with open(args.nums_file, 'r') as file:
     for line in file:
         nums.append(int(line.strip()))
 
@@ -18,4 +26,5 @@ else:
     min_sum = 0
 
 print(min_sum)
+
 
